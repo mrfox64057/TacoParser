@@ -1,4 +1,6 @@
-﻿namespace LoggingKata
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace LoggingKata
 {
     /// <summary>
     /// Parses a POI file to locate all the Taco Bells
@@ -25,9 +27,13 @@
             // grab the latitude from your array at index 0
             // grab the longitude from your array at index 1
             // grab the name from your array at index 2
+            double latitude = double.Parse(cells[0]);
+            double longitude = double.Parse(cells[1]);
+            string name = cells[2];
 
             // Your going to need to parse your string as a `double`
             // which is similar to parsing a string as an `int`
+
 
             // You'll need to create a TacoBell class
             // that conforms to ITrackable
@@ -37,8 +43,17 @@
 
             // Then, return the instance of your TacoBell class
             // Since it conforms to ITrackable
+           
+            var point = new Point();
+            var tacoBell = new TacoBell();
+            tacoBell.Name = name;
+            point.Latitude = latitude;
+            point.Longitude = longitude;
+            tacoBell.Location = point;
 
-            return null;
+
+
+            return tacoBell;
         }
     }
 }
